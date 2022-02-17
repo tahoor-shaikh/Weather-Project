@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>HeaderLinks}}
+</head>
+
+<body>
+    {{>navbar}}
+
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+
+                <div class="main_content">
+                    <form class="temp_form">
+                        <input type="text" id="cityName" placeholder="Enter Your City Name" autocomplete="off">
+                        <input type="submit" value="search" id="submit-btn">
+                    </form>
+                </div>
+
+                <div class="tempInformation">
+                    <div class="top_layer">
+                        <p id="day"></p>
+                        <p id="today_date"></p>
+                    </div>
+                    <div class="main_layer">
+                        <p id="city_name" class="text-capitalize">Output will be shown here.</p>
+                        <div class="middle_layer data_hide">
+                            <p><span id="temp">0</span>&deg;C </p>
+                            <p id="temp_status"> <i class="fa fa-cloud"></i> </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Code -->
+
+    <footer >
+        <p>Created by Danish Shaikh😀</p>
+    </footer>
+
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    {{!-- My JS Files --}}
+    <script src="js/main.js"></script>
+    <script>
+        const day = document.getElementById('day');
+        const today_date = document.getElementById('today_date');
+
+        const getCurrentDayandTime = ()=>{
+             const monthsName = [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "June",
+                "July",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec",
+            ];
+            let now = new Date();
+            let month = monthsName[now.getMonth()];
+            let date = now.getDate();
+
+            today_date.innerHTML = `${date} ${month}`;
+        }
+        
+        const getCurrentDay = () => {
+            let weekday = new Array(7);
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
+            let currentTime = new Date();
+            let currday = weekday[currentTime.getDay()]
+            
+            day.innerHTML = currday;
+        };
+
+        getCurrentDay();
+        getCurrentDayandTime();
+    </script>
+</body>
+
+</html>
